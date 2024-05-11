@@ -1,6 +1,6 @@
 {
   "name": "startpage",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Overrides the browsers newtab page with a custom startpage.",
   "main": "src/index.js",
   "devDependencies": {
@@ -11,9 +11,8 @@
     "clean": "rm -r build/ || true",
     "build-base": "npm run clean && mkdir build/ && cp -r src/* build/",
     "build-ff": "npm run build-base && ./zip.sh 'firefox'",
-    "patch-ch": "patch build/index.html < patch/index-html-chrome.diff && patch build/manifest.json < patch/manifest-json-chrome.diff",
-    "polyf-ch": "cp node_modules/webextension-polyfill/dist/browser-polyfill.js build/js/",
-    "build-ch": "npm run build-base && npm run polyf-ch && npm run patch-ch && ./zip.sh 'chrome'"
+    "patch-ch": "patch build/manifest.json < patch/manifest-json-chrome.diff",
+    "build-ch": "npm run build-base && npm run patch-ch && ./zip.sh 'chrome'"
   },
   "repository": {
     "type": "git",

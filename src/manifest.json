@@ -1,8 +1,8 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "startpage",
   "short_name": "startpage",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "Overrides the browsers newtab page with a custom startpage.",
   "author": "etacarinaea",
 
@@ -24,10 +24,7 @@
   },
 
   "background": {
-    "scripts": [
-      "js/update.js",
-      "js/update-config.js"
-    ]
+    "service_worker": "js/service-worker.js"
   },
 
   "permissions": [

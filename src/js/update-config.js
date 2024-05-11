@@ -1,3 +1,7 @@
+if (!("browser" in self)) {
+  self.browser = self.chrome;
+}
+
 function Version(versionString) {
   [this.major, this.minor, this.patch] = versionString.split('.');
 }
@@ -25,14 +29,6 @@ function updateConfig(config) {
       logUpdateError
     );
     return;
-  }
-
-  if(previousVersion.major < 1 || (previousVersion.major === 1
-                                   && previousVersion.minor < 11)) {
-    // For versions before 1.11.0
-    if(typeof localStorage.config !== "undefined") {
-      localStorage.clear();
-    }
   }
 
   // Set the config version to the current version
