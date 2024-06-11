@@ -5,14 +5,18 @@ body {
 }
 
 #container a {
-  display:inline-block;
-  color:inherit;
   text-decoration:none;
   line-height:25px;
   height:100%;
   width:100%;
 }
 
+img {
+  height:16px;
+  width:16px;
+  float:center;
+  padding-right:10px;
+}
 
 #bgimg {
   z-index:-10;

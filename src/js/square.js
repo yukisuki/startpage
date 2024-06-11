@@ -38,11 +38,28 @@ function Square(heading, props, configBool, configStyle) {
   this.linkElements = [];
   if(!this.props.isSearch) {
     for (let i = 0; i < this.props.links.length; i++) {
-      this.linkElements[i] = document.createElement("a");
-      this.linkElements[i].tabIndex = "-1";
-      this.linkElements[i].setAttribute("href", this.props.links[i].url);
+      var div = document.createElement("div");
+      var icon = document.createElement("img");
+      var link = document.createElement("a");
+
+      var iconUrl = function(url){
+        var ico = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i)[1].split('.').slice(-3).join('.');
+        var icoUrl = "https://www.google.com/s2/favicons?domain="+ico;
+
+        return icoUrl;
+      };
+
+      div.setAttribute("id", "linkItem");
+      icon.setAttribute("src", iconUrl(this.props.links[i].url));
+      link.setAttribute("href", this.props.links[i].url);
+
+      div.appendChild(icon);
+      div.appendChild(link);
       const textnode = document.createTextNode(this.props.links[i].name);
-      this.linkElements[i].appendChild(textnode);
+      link.appendChild(textnode);
+
+      this.linkElements[i] = div;
+      this.linkElements[i].tabIndex = "-1";  
       this.contentElement.appendChild(this.linkElements[i]);
       this.contentElement.appendChild(document.createElement("br"));
     }
